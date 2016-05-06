@@ -151,7 +151,7 @@
 //{
 //    
 //    mainRecognizer = recognizer;
-//    CGPoint translation = [recognizer translationInView:self.carImage];
+//    s
 //    
 //    CGPoint currCarPosition = CGPointMake(recognizer.view.center.x + translation.x,
 //                                         recognizer.view.center.y );
