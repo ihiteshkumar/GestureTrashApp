@@ -9,6 +9,8 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UIButton *trashButton;
 
 @end
 
@@ -16,7 +18,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    
+    [self.imgView setUserInteractionEnabled:YES];
+    [self.imgView addGestureRecognizer:panGesture];
+}
+-(void)handlePanGesture:(UIPanGestureRecognizer *)sender
+{
+    CGPoint translate = [sender translationInView:self.imgView];
+    
+    CGRect newFrame = self.imgView.frame;
+
+    newFrame.origin.x += translate.x;
+    newFrame.origin.y += translate.y;
+    
+    sender.view.frame = newFrame; // comment this it don't want faster move
+
+    if(sender.state == UIGestureRecognizerStateEnded){
+        self.imgView.frame = newFrame;
+    }
+
+}
+- (IBAction)myButton:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning {
