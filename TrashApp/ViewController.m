@@ -39,6 +39,11 @@
     if(sender.state == UIGestureRecognizerStateEnded){
         self.imgView.frame = newFrame;
     }
+    //for hide when image will touch the button
+    if (self.imgView.frame.origin.y + self.imgView.frame.size.height > self.trashButton.frame.origin.y) {
+        [self.imgView setHidden:YES];
+        NSLog(@"Hidden");
+    }
 
 }
 - (IBAction)myButton:(id)sender {
