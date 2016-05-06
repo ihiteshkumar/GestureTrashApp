@@ -14,7 +14,10 @@
     newFrame.origin.x += translate.x;
     newFrame.origin.y += translate.y;
     
-    sender.view.frame = newFrame; // comment this it don't want faster move
+    //sender.view.frame = newFrame; // comment this it don't want faster move
+    
+    [sender setTranslation:CGPointZero inView:self.view]; //set translate back to 0, to stop the view for further translation
+
 
     if(sender.state == UIGestureRecognizerStateEnded){
         self.imgView.frame = newFrame;
